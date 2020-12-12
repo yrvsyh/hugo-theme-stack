@@ -32,13 +32,16 @@
         {{ . }}
     </h3>
     {{ end }}
-
-    {{- if not .Date.IsZero -}}
-    <footer class="article-time">
-        {{ partial "helper/icon" "clock" }}
-        <time class="article-time--published">
-            {{- .Date.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
-        </time>
+    
+    <footer class="article-time" style="display: flex; justify-content: space-between">
+        <span>
+            {{- if not .Date.IsZero -}}
+            {{ partial "helper/icon" "clock" }}
+            <time class="article-time--published">
+                {{- .Date.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
+            </time>
+            {{- end -}}
+        </span>
+        <span>{{ .WordCount }} Words</span>
     </footer>
-    {{- end -}}
 </div>
